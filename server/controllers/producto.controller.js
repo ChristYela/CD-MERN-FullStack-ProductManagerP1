@@ -19,3 +19,16 @@ module.exports.create_product = (req, res) => {
         .catch(err => res.json({message: "Hubo un error "+err}));
 
 }
+
+
+module.exports.update_product = (req, res) => {
+    Producto.findOneAndUpdate({_id: req.params.id}, req.body, {new:true, runValidators:true})
+        .then(producto => res.json(producto))
+        .catch(err => res.json({message: "Hubo un error "+err}));
+}
+
+module.exports.delete_product = (req, res) => {
+    Producto.deleteOne({_id: req.params.id})
+        .then(result => res.json({result}))
+        .catch(err => res.json({message: "Hubo un error "+err}));
+}

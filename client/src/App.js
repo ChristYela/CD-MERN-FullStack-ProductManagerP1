@@ -2,6 +2,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import NuevoProducto from './componentes/NuevoProducto';
 import Producto from './componentes/Producto';
 import TodosProductos from './componentes/TodosProductos';
+import ActualizarProducto from './componentes/ActualizarProducto';
 
 const App = () => {
   return (
@@ -10,8 +11,9 @@ const App = () => {
         <Switch>
           <Route path="/" exact render={()=> <TodosProductos/> } />
           <Route path="/producto/:id" exact render={() => <Producto/>}/>
-          <Route patch="/nuevo" render={() => <NuevoProducto />}/>
-        </Switch>
+          <Route path="/nuevo" render={() => <NuevoProducto />}/>
+          <Route path="/producto/editar/:id"  render={() => <ActualizarProducto/>}/>
+          </Switch>
       </BrowserRouter>
     </div>
   );
